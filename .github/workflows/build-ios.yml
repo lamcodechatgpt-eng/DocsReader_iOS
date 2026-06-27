@@ -31,14 +31,13 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
-            CONFIGURATION_BUILD_DIR=build/Release-iphoneos \
             build \
             CODE_SIGN_ENTITLEMENTS=""
             
       - name: Create Payload and Zip
         run: |
           mkdir -p Payload
-          mv build/Release-iphoneos/DocsReader.app Payload/
+          find ~/Library/Developer/Xcode/DerivedData -name "DocsReader.app" -type d -exec cp -R {} Payload/ \;
           zip -r DocsReader.ipa Payload
           
       - name: Upload IPA Artifact
