@@ -10,12 +10,22 @@ targets:
     sources:
       - path: ContentView.swift
       - path: DocsReaderApp.swift
+    info:
+      path: Info.plist
+      properties:
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        GIDClientID: "MOCK_CLIENT_ID_REPLACE_ME.apps.googleusercontent.com"
+        CFBundleURLTypes:
+          - CFBundleTypeRole: Editor
+            CFBundleURLSchemes:
+              - "com.googleusercontent.apps.MOCK_CLIENT_ID_REPLACE_ME"
+        UIBackgroundModes:
+          - audio
     settings:
       CODE_SIGNING_ALLOWED: "NO"
       CODE_SIGNING_REQUIRED: "NO"
-      GENERATE_INFOPLIST_FILE: "YES"
-      INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
-      INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
     dependencies:
       - package: GoogleSignIn
         product: GoogleSignIn
