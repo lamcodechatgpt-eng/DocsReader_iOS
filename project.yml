@@ -2,7 +2,7 @@ name: DocsReader
 options:
   bundleIdPrefix: com.nexus
   deploymentTarget:
-    iOS: "15.0"
+    iOS: "16.0"
 targets:
   DocsReader:
     type: application
@@ -17,6 +17,9 @@ targets:
       INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
     dependencies:
       - package: GoogleSignIn
+        product: GoogleSignIn
+      - package: GoogleSignIn
+        product: GoogleSignInSwift
 
 packages:
   GoogleSignIn:
