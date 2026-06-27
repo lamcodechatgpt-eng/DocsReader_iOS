@@ -30,14 +30,21 @@ class DocsManager: ObservableObject {
     }
     
     func fetchDocument() {
-        guard !documentId.isEmpty, !accessToken.isEmpty else {
+        var parsedId = documentId.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let range = parsedId.range(of: "/d/([a-zA-Z0-9-_]+)", options: .regularExpression) {
+            let matched = String(parsedId[range])
+            parsedId = matched.replacingOccurrences(of: "/d/", with: "")
+            DispatchQueue.main.async { self.documentId = parsedId }
+        }
+        
+        guard !parsedId.isEmpty, !accessToken.isEmpty else {
             statusMessage = "Thiếu ID hoặc Token"
             return
         }
         isLoading = true
         statusMessage = "Đang kéo dữ liệu..."
         
-        let url = URL(string: "https://docs.googleapis.com/v1/documents/\(documentId)")!
+        let url = URL(string: "https://docs.googleapis.com/v1/documents/\(parsedId)")!
         var req = URLRequest(url: url)
         req.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
