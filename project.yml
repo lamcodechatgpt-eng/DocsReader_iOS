@@ -16,11 +16,11 @@ targets:
         UILaunchScreen: {}
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
-        GIDClientID: "MOCK_CLIENT_ID_REPLACE_ME.apps.googleusercontent.com"
+        GIDClientID: "727455900885-emb3k5dk3eukfs3h9qdtfqljrgn7r7pi.apps.googleusercontent.com"
         CFBundleURLTypes:
           - CFBundleTypeRole: Editor
             CFBundleURLSchemes:
-              - "com.googleusercontent.apps.MOCK_CLIENT_ID_REPLACE_ME"
+              - "com.googleusercontent.apps.727455900885-emb3k5dk3eukfs3h9qdtfqljrgn7r7pi"
         UIBackgroundModes:
           - audio
     settings:
