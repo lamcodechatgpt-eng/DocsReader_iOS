@@ -10,7 +10,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Install xcodegen
         run: brew install xcodegen
@@ -41,7 +41,7 @@ jobs:
           zip -r DocsReader.ipa Payload
           
       - name: Upload IPA Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: DocsReader.ipa
           path: DocsReader.ipa
