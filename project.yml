@@ -1,0 +1,24 @@
+name: DocsReader
+options:
+  bundleIdPrefix: com.nexus
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  DocsReader:
+    type: application
+    platform: iOS
+    sources:
+      - path: ContentView.swift
+      - path: DocsReaderApp.swift
+    settings:
+      CODE_SIGNING_ALLOWED: "NO"
+      CODE_SIGNING_REQUIRED: "NO"
+      INFOPLIST_KEY_UIApplicationSceneManifest_Generation: "YES"
+      INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+    dependencies:
+      - package: GoogleSignIn
+
+packages:
+  GoogleSignIn:
+    url: https://github.com/google/GoogleSignIn-iOS.git
+    from: 7.0.0

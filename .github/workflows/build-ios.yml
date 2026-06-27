@@ -1,0 +1,43 @@
+name: Build iOS IPA (Unsigned)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Install xcodegen
+        run: brew install xcodegen
+        
+      - name: Generate Xcode Project
+        run: xcodegen generate
+        
+      - name: Build IPA (Unsigned)
+        run: |
+          xcodebuild -project DocsReader.xcodeproj \
+            -scheme DocsReader \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build \
+            CODE_SIGN_ENTITLEMENTS=""
+            
+      - name: Create Payload and Zip
+        run: |
+          mkdir -p Payload
+          mv build/Release-iphoneos/DocsReader.app Payload/
+          zip -r DocsReader.ipa Payload
+          
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: DocsReader.ipa
+          path: DocsReader.ipa
