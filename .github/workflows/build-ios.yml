@@ -31,6 +31,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
+            CONFIGURATION_BUILD_DIR=build/Release-iphoneos \
             build \
             CODE_SIGN_ENTITLEMENTS=""
             
